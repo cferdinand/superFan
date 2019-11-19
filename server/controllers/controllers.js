@@ -8,7 +8,7 @@ const {
 
 module.exports = {
   getTeams: (req, res) => {
-    getListOfTeams(req.params.id)
+    getListOfTeams(req.params.teamId)
       .then(data => {
         res.send(data).status(200);
       })
@@ -27,16 +27,14 @@ module.exports = {
         res.sendStatus(500);
       });
   },
-  getStandings: (req, res) => {
-    console.log(req.params);
-    getListOfStandings(req.params.id)
-      .then(data => {
-        res.send(data).status(200);
-      })
-      .catch(err => {
-        console.log(err);
-        res.sendStatus(500);
-      });
+  getStandings: async (req, res) => {
+    try {
+      let standing = await getListOfStandings(req.params.leagueId);
+      res.send(standing.data).status(200);
+    } catch (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
   },
   getHighlights: () => {},
   addFavorites: (req, res) => {
