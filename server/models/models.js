@@ -50,9 +50,12 @@ module.exports = {
         throw err;
       });
   },
-  getHighlights: () => {
+  getHighlights: match => {
+    const headers = `part=snippet&q=${match} highlights&channelId=UCqZQlzSHbVJrwrn5XvzrzcA&key=${youtube.APIKEY}&content-type=application/json&videoEmbeddable=true&type=video`;
+
     return axios
-      .get(`https://www.googleapis.com/youtube/v3/search`)
+      .get(`https://www.googleapis.com/youtube/v3/search?${headers}`)
+
       .then(data => {
         return data;
       })

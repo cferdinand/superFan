@@ -1,9 +1,16 @@
 import React from "react";
+import ChooseTeams from "./ChooseTeam.jsx";
+import Login from "./Login.jsx";
 
 const App = () => {
   return (
     <div>
-      <h1>HELLO WORLD</h1>
+      {/* <div>
+        <Login />
+      </div> */}
+      <div>
+        <ChooseTeams />
+      </div>
     </div>
   );
 };

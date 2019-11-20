@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
-import temp from "./temp.jsx";
-const main = combineReducers({ temp: temp });
+import teams from "./teams.jsx";
+
+const main = combineReducers({ teams: teams });
 
 export default main;
