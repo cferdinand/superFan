@@ -1,18 +1,20 @@
 import React from "react";
 
-export const FavoriteTeams = () => {
+const FavoriteTeams = ({ favoriteTeam }) => {
   return (
     <div>
       <table>
         <tr>
           <td>
-            <img src={favorite.logo} />
+            <img src={favoriteTeam.logo} />
           </td>
           <td>
-            <p>{favorite.name}</p>
+            <p>{favoriteTeam.name}</p>
           </td>
         </tr>
       </table>
     </div>
   );
 };
+
+export default FavoriteTeams;

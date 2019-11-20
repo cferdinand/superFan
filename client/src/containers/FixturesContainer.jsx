@@ -1,15 +1,14 @@
 import { connect } from "react-redux";
-import getTeams from "../actions/getTeams.js";
-import addFavorite from "../actions/addFavorite.js";
-import ChooseTeam from "../components/ChooseTeam.jsx";
+import getFixtures from "../actions/getFixtures.js";
+import Fixtures from "../components/Fixtures.jsx";
 
 const mapStateToProps = store => ({
-  favorite: store.favorite
+  favoriteTeam: store.favorite.team_id,
+  fixtures: store.fixtures
 });
 const mapDispatchToProps = dispatch => {
   return {
-    add: () => dispatch(getTeams()),
-    favorite: team => dispatch(addFavorite(team))
+    getFixtures: team => dispatch(getFixtures([team]))
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(ChooseTeam);
+export default connect(mapStateToProps, mapDispatchToProps)(Fixtures);

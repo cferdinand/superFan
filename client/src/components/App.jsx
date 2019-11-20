@@ -1,6 +1,6 @@
 import React from "react";
-import ChooseTeams from "../containers/Teams.jsx";
 import Login from "./Login.jsx";
+import MainPage from "./MainPage.jsx";
 
 const App = () => {
   return (
@@ -8,9 +8,9 @@ const App = () => {
       <div>
         <Login />
       </div>
-      {/* <div>
-        <ChooseTeams />
-      </div> */}
+      <div>
+        <MainPage />
+      </div>
     </div>
   );
 };

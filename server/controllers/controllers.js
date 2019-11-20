@@ -18,7 +18,7 @@ module.exports = {
       });
   },
   getFixtures: (req, res) => {
-    getFixtureList(req.params.teamsId, req.params.leagueId)
+    getFixtureList(req.params.teamId, req.params.leagueId)
       .then(data => {
         res.send(data.data).status(200);
       })

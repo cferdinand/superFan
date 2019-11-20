@@ -30,7 +30,7 @@ const ChooseTeam = ({ teams, allTeams, favorite }) => {
     }
   };
   const addTeam = team => {
-    favorite([team]);
+    favorite(team);
   };
   return (
     <div>
