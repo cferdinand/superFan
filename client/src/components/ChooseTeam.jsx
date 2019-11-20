@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-// import getTeams from "../actions/getTeams.js";
 
-const ChooseTeam = ({ teams, allTeams }) => {
+const ChooseTeam = ({ teams, allTeams, favorite }) => {
   useEffect(() => {
     teams();
   }, []);
@@ -10,8 +9,19 @@ const ChooseTeam = ({ teams, allTeams }) => {
       return allTeams.map(team => {
         return (
           <td>
-            <img src={team.logo} />
-            <p>{team.name}</p>
+            <img
+              src={team.logo}
+              onClick={() => {
+                addTeam(team);
+              }}
+            />
+            <p
+              onClick={() => {
+                addTeam(team);
+              }}
+            >
+              {team.name}
+            </p>
           </td>
         );
       });
@@ -19,8 +29,8 @@ const ChooseTeam = ({ teams, allTeams }) => {
       return "";
     }
   };
-  const addTeam = () => {
-    //TODO: add team action and reducer
+  const addTeam = team => {
+    favorite([team]);
   };
   return (
     <div>

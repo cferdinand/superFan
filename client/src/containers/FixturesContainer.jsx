@@ -4,11 +4,11 @@ import addFavorite from "../actions/addFavorite.js";
 import ChooseTeam from "../components/ChooseTeam.jsx";
 
 const mapStateToProps = store => ({
-  allTeams: store.teams
+  favorite: store.favorite
 });
 const mapDispatchToProps = dispatch => {
   return {
-    teams: () => dispatch(getTeams()),
+    add: () => dispatch(getTeams()),
     favorite: team => dispatch(addFavorite(team))
   };
 };

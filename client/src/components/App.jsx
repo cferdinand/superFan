@@ -5,12 +5,12 @@ import Login from "./Login.jsx";
 const App = () => {
   return (
     <div>
-      {/* <div>
-        <Login />
-      </div> */}
       <div>
-        <ChooseTeams />
+        <Login />
       </div>
+      {/* <div>
+        <ChooseTeams />
+      </div> */}
     </div>
   );
 };
