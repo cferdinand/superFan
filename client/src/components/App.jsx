@@ -1,5 +1,5 @@
 import React from "react";
-import ChooseTeams from "./ChooseTeam.jsx";
+import ChooseTeams from "../containers/Teams.jsx";
 import Login from "./Login.jsx";
 
 const App = () => {

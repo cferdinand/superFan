@@ -9,8 +9,8 @@ const {
 module.exports = {
   getTeams: (req, res) => {
     getListOfTeams(req.params.leagueId)
-      .then(data => {
-        res.send(data.data).status(200);
+      .then(({ data }) => {
+        res.send(data.api).status(200);
       })
       .catch(err => {
         console.log(err);
@@ -18,7 +18,7 @@ module.exports = {
       });
   },
   getFixtures: (req, res) => {
-    getFixtureList(req.params.teamsId)
+    getFixtureList(req.params.teamsId, req.params.leagueId)
       .then(data => {
         res.send(data.data).status(200);
       })
