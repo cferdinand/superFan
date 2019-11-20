@@ -8,9 +8,9 @@ const {
 
 module.exports = {
   getTeams: (req, res) => {
-    getListOfTeams(req.params.teamId)
-      .then(data => {
-        res.send(data).status(200);
+    getListOfTeams(req.params.leagueId)
+      .then(({ data }) => {
+        res.send(data.api).status(200);
       })
       .catch(err => {
         console.log(err);
@@ -18,9 +18,9 @@ module.exports = {
       });
   },
   getFixtures: (req, res) => {
-    getFixtureList(req.params.id)
+    getFixtureList(req.params.teamsId, req.params.leagueId)
       .then(data => {
-        res.send(data).status(200);
+        res.send(data.data).status(200);
       })
       .catch(err => {
         console.log(err);
@@ -36,11 +36,19 @@ module.exports = {
       res.sendStatus(500);
     }
   },
-  getHighlights: () => {},
+  getHighlights: async (req, res) => {
+    try {
+      let highlights = await getHighlights(req.params.team);
+      res.send(highlights.data).status(200);
+    } catch (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+  },
   addFavorites: (req, res) => {
     addFavoriteTeam(req.body)
       .then(data => {
-        res.send(data).status(201);
+        res.send(data.data).status(201);
       })
       .catch(err => {
         console.log(err);

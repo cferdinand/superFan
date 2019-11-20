@@ -7,9 +7,9 @@ const {
   addFavorites
 } = require("../controllers/controllers.js");
 
-router.get("/fixtures/:teamId", getFixtures);
+router.get("/fixtures/:teamId/:leagueId", getFixtures);
 router.get("/standings/:leagueId", getStandings);
-router.get("/highlights", getHighlights);
+router.get("/highlights/:team", getHighlights);
 router.get("/teams/:leagueId", getTeams);
 router.post("/favorite", addFavorites);
 
