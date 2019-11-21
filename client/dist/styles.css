@@ -1,0 +1,162 @@
+.navigation {
+  height: 60px;
+  margin-bottom: 15px;
+  width: 100%;
+  border-bottom: outset;
+}
+
+.nav_logo_image {
+  height: 50px;
+}
+
+.nav_bar {
+  display: flex;
+  width: 100%;
+}
+
+.mainpage {
+  display: flex;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+  height: 320px;
+  border: outset;
+  justify-content: center;
+}
+
+.loginForm {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 33%;
+  height: 100px;
+  align-content: normal;
+}
+
+button {
+  width: 70px;
+  height: 20px;
+}
+.pageBody {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.teamChooserTable {
+  display: grid;
+  height: inherit;
+  width: inherit;
+  grid-template-columns: repeat(5, auto);
+}
+
+.teamrow {
+  font-size: 12px;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.teamrow img {
+  height: 80px;
+}
+
+.main_widgets {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+}
+
+.favorite_main {
+  align-self: center;
+}
+
+.favorite_team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.favorite_teamlogo {
+  height: 70px;
+}
+
+.favorite_team_name {
+  font-size: 16px;
+}
+
+.fixtures_highlights {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.fixtures_main {
+  height: 100vh;
+  width: 50%;
+  overflow: scroll;
+}
+.fixtures_table {
+  width: 100%;
+}
+
+.fixtures_teamlogo {
+  height: 50px;
+}
+.fixtures_team_name {
+  font-size: 12px;
+}
+
+.fixture_team {
+  width: 50px;
+}
+
+.highlights_main {
+  width: 50%;
+}
+
+.matchup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
+  align-items: center;
+}
+
+.standings_teamInfo {
+  display: grid;
+  grid-template-columns: 15% 15% 70%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.standings_position {
+  justify-self: center;
+}
+
+.standings_teamlogo {
+  height: 20px;
+}
+
+.standings_teamName {
+  font-size: 14px;
+  padding-left: 3px;
+}
+
+.standings_table {
+  width: 100%;
+  background-color: aliceblue;
+}
+
+.standings_main {
+  height: 100vh;
+  width: 25%;
+  overflow: scroll;
+  float: right;
+  background-color: aliceblue;
+}

@@ -9,8 +9,8 @@ const {
 
 router.get("/fixtures/:teamId/:leagueId", getFixtures);
 router.get("/standings/:leagueId", getStandings);
-router.get("/highlights/:team", getHighlights);
-router.get("/teams/:leagueId", getTeams);
+router.get("/highlights", getHighlights);
+router.get("/:leagueId", getTeams);
 router.post("/favorite", addFavorites);
 
 module.exports = router;

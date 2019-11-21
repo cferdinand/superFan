@@ -1,19 +1,33 @@
 import React from "react";
-import ChooseTeams from "../containers/Teams.jsx";
+import Standings from "../containers/StandingsContainer.jsx";
 import Fixtures from "../containers/FixturesContainer.jsx";
 import Favorite from "../containers/FavoriteContainer.jsx";
+import Highlights from "../containers/HighlightsContainer.jsx";
+import Nav from "./Nav.jsx";
 
 const MainPage = () => {
   return (
     <div>
-      <div>
-        <Fixtures />
+      <div className="navigation">
+        <Nav />
       </div>
-      <div>
-        <ChooseTeams />
-      </div>
-      <div>
-        <Favorite />
+      <div className="mainpage">
+        <div className="main_widgets">
+          <div className="favorite_main">
+            <Favorite />
+          </div>
+          <div className="fixtures_highlights">
+            <div className="fixtures_main">
+              <Fixtures />
+            </div>
+            <div className="highlights_main">
+              <Highlights />
+            </div>
+          </div>
+        </div>
+        <div className="standings_main">
+          <Standings />
+        </div>
       </div>
     </div>
   );

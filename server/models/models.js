@@ -51,11 +51,9 @@ module.exports = {
       });
   },
   getHighlights: match => {
-    const headers = `part=snippet&q=${match} highlights&channelId=UCqZQlzSHbVJrwrn5XvzrzcA&key=${youtube.APIKEY}&content-type=application/json&videoEmbeddable=true&type=video`;
-
+    const headers = `part=snippet&q="${match}" highlights&channelId=UCqZQlzSHbVJrwrn5XvzrzcA&key=${youtube.APIKEY}&content-type=application/json&videoEmbeddable=true&type=video&maxResults=1`;
     return axios
       .get(`https://www.googleapis.com/youtube/v3/search?${headers}`)
-
       .then(data => {
         return data;
       })

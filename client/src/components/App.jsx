@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Login from "./Login.jsx";
-import MainPage from "./MainPage.jsx";
+import Nav from "./Nav.jsx";
 
 const App = () => {
+  const [elementClass, updateClassName] = useState("pageBody");
+
   return (
     <div>
-      <div>
-        <Login />
+      <div className="navigation">
+        <Nav />
       </div>
-      <div>
-        <MainPage />
+      <div className={elementClass}>
+        <div className="loginContainer">
+          <Login updateClassName={updateClassName} />
+        </div>
       </div>
     </div>
   );

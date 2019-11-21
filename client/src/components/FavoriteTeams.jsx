@@ -2,17 +2,9 @@ import React from "react";
 
 const FavoriteTeams = ({ favoriteTeam }) => {
   return (
-    <div>
-      <table>
-        <tr>
-          <td>
-            <img src={favoriteTeam.logo} />
-          </td>
-          <td>
-            <p>{favoriteTeam.name}</p>
-          </td>
-        </tr>
-      </table>
+    <div className="favorite_team">
+      <img src={favoriteTeam.logo} className="favorite_teamlogo" />
+      <p className="favorite_team_name ">{favoriteTeam.name}</p>
     </div>
   );
 };
