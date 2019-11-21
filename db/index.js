@@ -3,15 +3,13 @@ const config = require("../config.json");
 
 if (process.env.NODE_ENV === "dev") {
   config.env = config.development;
-} else if (process.env.NODE_ENV === "prod") {
-  config.env = config.production;
 }
 
 const pool = new Pool({
-  user: config.env.PGUSER,
-  host: config.env.PGHOST,
-  database: config.env.PGDATABASE,
-  port: config.env.PGPORT
+  user: process.env.PGUSER || config.env.PGUSER,
+  host: process.env.PGHOST || config.env.PGHOST,
+  database: process.env.PGDATABASE || config.env.PGDATABASE,
+  port: process.env.PGPORT || config.env.PGPORT
 });
 
 pool.on("error", (err, client) => {
