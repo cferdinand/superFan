@@ -9,7 +9,8 @@
     "create-db": "psql postgres -a -f ./db/schema.sql",
     "start-dev": "concurrently \"npm run build-dev\" \"nodemon server/index.js\"",
     "build-dev": "webpack -d --watch --mode development",
-    "build-prod": "webpack -p --mode production"
+    "build-prod": "webpack -p --mode production",
+    "heroku-postbuild": "npm install && npm run build-prod"
   },
   "repository": {
     "type": "git",
