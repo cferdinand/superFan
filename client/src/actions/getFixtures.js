@@ -1,11 +1,10 @@
 import axios from "axios";
-import { hostUrl } from "../../../config.json";
 
 const getFixtures = teamId => {
   const leagueId = 2;
   return dispatch => {
     return axios
-      .get(`${hostUrl}/home/fixtures/${teamId}/${leagueId}`)
+      .get(`/home/fixtures/${teamId}/${leagueId}`)
       .then(({ data }) => {
         dispatch({
           type: "FIXTURES",

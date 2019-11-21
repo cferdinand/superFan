@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 
-const Login = ({ validateUser }) => {
+const Login = () => {
   const login = () => {
-    validateUser(username, password);
+    //validateUser();
   };
   return (
     <div>

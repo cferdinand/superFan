@@ -1,10 +1,9 @@
 import axios from "axios";
-import { hostUrl } from "../../../config.json";
 
 const getHighlights = match => {
   return dispatch => {
     return axios
-      .get(`${hostUrl}/home/highlights?match=${match}`)
+      .get(`/home/highlights?match=${match}`)
       .then(data => {
         dispatch({
           type: "HIGHLIGHTS",

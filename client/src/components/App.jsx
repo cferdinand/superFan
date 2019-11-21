@@ -8,9 +8,9 @@ const App = () => {
       <div className="navigation">
         <Nav />
       </div>
-      <div className={elementClass}>
+      <div className="pageBody">
         <div className="loginContainer">
-          <Login updateClassName={updateClassName} />
+          <Login />
         </div>
       </div>
     </div>
