@@ -1,12 +1,21 @@
-const { apiCall, youtube } = require("../../config.json");
 const axios = require("axios");
 const db = require("../../db/index.js");
 const bcrypt = require("bcrypt");
 
+let config;
+let apiCall;
+let youtube;
+if (process.env.NODE_ENV === "development") {
+  config = require("../../config.json");
+  apiCall = config.apiCall;
+  youtube = config.youtube;
+}
+
 const headers = {
   "content-type": "application/octet-stream",
-  "x-rapidapi-host": apiCall["x-rapidapi-host"],
-  "x-rapidapi-key": apiCall.APIKEY
+  "x-rapidapi-host":
+    process.env["x-rapidapi-host"] || apiCall["x-rapidapi-host"],
+  "x-rapidapi-key": process.env.football_APIKEY || apiCall.APIKEY
 };
 
 module.exports = {
@@ -53,7 +62,8 @@ module.exports = {
       });
   },
   getHighlights: match => {
-    const headers = `part=snippet&q="${match}" highlights&channelId=UCqZQlzSHbVJrwrn5XvzrzcA&key=${youtube.APIKEY}&content-type=application/json&videoEmbeddable=true&type=video&maxResults=1`;
+    let apiKey = process.env.youtube_APIKEY || youtube.APIKEY;
+    const headers = `part=snippet&q="${match}" highlights&channelId=UCqZQlzSHbVJrwrn5XvzrzcA&key=${apiKey}&content-type=application/json&videoEmbeddable=true&type=video&maxResults=1`;
     return axios
       .get(`https://www.googleapis.com/youtube/v3/search?${headers}`)
       .then(data => {
