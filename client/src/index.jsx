@@ -22,9 +22,9 @@ const routing = (
       <Switch>
         <Route exact path="/">
           {sessionId ? (
-            <Redirect to="/login" component={App} />
-          ) : (
             <Redirect to="/home" component={App} />
+          ) : (
+            <Redirect to="/login" component={App} />
           )}
         </Route>
         <Route export path="/signup" component={SignUp} />
