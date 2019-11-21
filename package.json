@@ -12,6 +12,9 @@
     "build-prod": "webpack -p --mode production",
     "heroku-postbuild": "npm install && node server/index.js"
   },
+  "engines": {
+    "node": "8.9.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cferdinand/superFan.git"
