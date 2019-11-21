@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
-import Home from "./MainPage.jsx";
+import {
+  Route,
+  Link,
+  Switch,
+  BrowserRouter as Router,
+  Redirect
+} from "react-router-dom";
+import Nav from "./Nav.jsx";
 
-const Login = ({ validateUser, loggedIn }) => {
+const SignUp = ({ addUser }) => {
   const [username, updateUserName] = useState("");
   const [password, updatePassword] = useState("");
 
-  useEffect(() => {
-    if (!!loggedIn) {
-      localStorage.removeItem("superfan_sessionId");
-    }
-  }, [loggedIn]);
-
-  const login = () => {
-    validateUser(username, password);
+  const addNewUser = () => {
+    return addUser(username, password);
   };
   return (
     <div>
+      <Nav />
       <form
         className="loginForm"
         onSubmit={e => {
           e.preventDefault();
-          login();
+          addNewUser();
         }}
       >
         <label>Username: </label>
@@ -30,7 +31,6 @@ const Login = ({ validateUser, loggedIn }) => {
             type="text"
             name="username"
             onChange={event => {
-              console.log(username);
               updateUserName(event.target.value);
             }}
           />
@@ -47,24 +47,18 @@ const Login = ({ validateUser, loggedIn }) => {
         </div>
         <Link to="/teams">
           <button type="submit" className="submit">
-            Login
+            Submit
           </button>
         </Link>
-        <button
-          type="reset"
-          className="reset"
-          onClick={e => {
-            e.preventDefault;
-          }}
-        >
+        <button type="reset" className="reset">
           Reset
         </button>
       </form>
       <div>
         <p>
           Don't have an account?
-          <Link to="/signup">
-            <span> Sign Up!</span>
+          <Link to="/login">
+            <span></span>
           </Link>
         </p>
       </div>
@@ -72,4 +66,4 @@ const Login = ({ validateUser, loggedIn }) => {
   );
 };
 
-export default Login;
+export default SignUp;

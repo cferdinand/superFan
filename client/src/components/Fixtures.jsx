@@ -13,7 +13,7 @@ const Fixtures = ({ favoriteTeam, getFixtures, fixtures, getHighlights }) => {
         let date = match.event_date.substr(0, match.event_date.indexOf("T"));
         let homeTeam = match.homeTeam.team_name;
         let awayTeam = match.awayTeam.team_name;
-        let matchUp = `${homeTeam} v. ${awayTeam} ${date}`;
+        let matchUp = `${homeTeam} v. ${awayTeam}`;
         return (
           <tr
             onClick={() => {

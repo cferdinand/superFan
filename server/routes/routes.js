@@ -6,7 +6,8 @@ const {
   getStandings,
   addFavorites,
   getExistingUser,
-  addUser
+  addUser,
+  getFavoriteTeam
 } = require("../controllers/controllers.js");
 
 router.get("/users", getExistingUser);
@@ -15,6 +16,7 @@ router.get("/standings/:leagueId", getStandings);
 router.get("/highlights", getHighlights);
 router.get("/:leagueId", getTeams);
 router.post("/favorite", addFavorites);
+router.get("/favorite", getFavoriteTeam);
 router.post("/users", addUser);
 
 module.exports = router;

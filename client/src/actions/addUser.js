@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const getHighlights = match => {
+const addUser = (username, password) => {
   return dispatch => {
     return axios
-      .get(`/home/highlights?match=${match}`)
+      .post(`/login/users`, { username, password })
       .then(({ data }) => {
         dispatch({
-          type: "HIGHLIGHTS",
-          payload: data
+          type: "LOGGEDIN",
+          payload: data.response
         });
       })
       .catch(err => {
@@ -16,4 +16,4 @@ const getHighlights = match => {
   };
 };
 
-export default getHighlights;
+export default addUser;

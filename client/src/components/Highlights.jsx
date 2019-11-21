@@ -10,7 +10,7 @@ const Highlights = ({ highlight }) => {
 
   const YouTube = () => {
     return (
-      <div>
+      <div className="video_player_container">
         <iframe
           className="embed-responsive-item"
           src={`https://www.youtube.com/embed/${highlight.id.videoId}`}

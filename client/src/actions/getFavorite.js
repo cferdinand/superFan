@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const addFavorite = (team, user) => {
+const getFavorite = (team, user) => {
   return dispatch => {
-    return axios.post("/teams/favorite", { team, user }).then(() => {
+    return axios.get("/teams/favorite").then(() => {
       dispatch({
         type: "FAVORITE",
         payload: team
@@ -11,4 +11,4 @@ const addFavorite = (team, user) => {
   };
 };
 
-export default addFavorite;
+export default getFavorite;

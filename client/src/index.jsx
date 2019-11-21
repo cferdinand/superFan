@@ -12,14 +12,22 @@ import {
 } from "react-router-dom";
 import ChooseTeam from "./containers/Teams.jsx";
 import Home from "./components/MainPage.jsx";
+import SignUp from "./components/SignUp.jsx";
+
+let sessionId = localStorage.getItem("superfan_sessionId");
 
 const routing = (
   <Router>
     <div>
       <Switch>
         <Route exact path="/">
-          <Redirect to="/login" component={App} />
+          {sessionId ? (
+            <Redirect to="/login" component={App} />
+          ) : (
+            <Redirect to="/home" component={App} />
+          )}
         </Route>
+        <Route export path="/signup" component={SignUp} />
         <Route exact path="/login" component={App} />
         <Route exact path="/teams" component={ChooseTeam} />
         <Route exact path="/home" component={Home} />

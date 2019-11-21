@@ -5,7 +5,8 @@ const {
   getListOfStandings,
   addFavoriteTeam,
   addNewUser,
-  getUser
+  getUser,
+  getFav
 } = require("../models/models.js");
 const bcrypt = require("bcrypt");
 
@@ -13,7 +14,7 @@ module.exports = {
   getTeams: async (req, res) => {
     try {
       let teams = await getListOfTeams(req.params.leagueId);
-      res.send(teams.data.api).status(200);
+      res.status(200).send(teams.data.api);
     } catch (err) {
       console.log(err);
       res.sendStatus(500);
@@ -25,7 +26,7 @@ module.exports = {
         req.params.teamId,
         req.params.leagueId
       );
-      res.send(fixtures.data).status(200);
+      res.status(200).send(fixtures.data);
     } catch (err) {
       console.log(err);
       res.sendStatus(500);
@@ -34,7 +35,7 @@ module.exports = {
   getStandings: async (req, res) => {
     try {
       let standings = await getListOfStandings(req.params.leagueId);
-      res.send(standings.data.api.standings[0]).status(200);
+      res.status(200).send(standings.data.api.standings[0]);
     } catch (err) {
       console.log(err);
       res.sendStatus(500);
@@ -43,7 +44,7 @@ module.exports = {
   getHighlights: async (req, res) => {
     try {
       let highlights = await getHighlights(req.query.match);
-      res.send(highlights.data.items[0]).status(200);
+      res.status(200).send(highlights.data.items[0]);
     } catch (err) {
       console.log(err);
       res.sendStatus(500);
@@ -56,11 +57,13 @@ module.exports = {
       bcrypt
         .hash(req.body.password, saltRounds)
         .then(async hash => {
+          console.log(hash);
           let sessionId = await addNewUser(req.body.username, hash, hash);
-          return sessionId.rows[0].sessionid;
+          localStorage.setItem("superfan_sessionId", hash);
+          return sessionId.rows[0].sessionid, id;
         })
         .then(sessionId => {
-          res.send(sessionId).status(200);
+          res.status(200).send(sessionId);
         });
     } else {
       res.sendStatus(400);
@@ -75,6 +78,8 @@ module.exports = {
           .then(valid => {
             valid ? res.sendStatus(200) : res.sendStatus(404);
           });
+      } else {
+        res.send({ response: "User Not Found" });
       }
     } catch (err) {
       console.log(err);
@@ -85,6 +90,15 @@ module.exports = {
     try {
       await addFavoriteTeam(req.body);
       res.sendStatus(201);
+    } catch (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+  },
+  getFavoriteTeam: async (req, res) => {
+    try {
+      let fav = await getFav();
+      res.status(201).send(fav);
     } catch (err) {
       console.log(err);
       res.sendStatus(500);

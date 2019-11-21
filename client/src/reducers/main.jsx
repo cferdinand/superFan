@@ -4,13 +4,15 @@ import fixtures from "./fixtures.jsx";
 import favorite from "./favorite.jsx";
 import highlights from "./highlights.jsx";
 import standings from "./standings.jsx";
+import loggedIn from "./login.jsx";
 
 const main = combineReducers({
   teams,
   fixtures,
   favorite,
   highlights,
-  standings
+  standings,
+  loggedIn
 });
 
 export default main;

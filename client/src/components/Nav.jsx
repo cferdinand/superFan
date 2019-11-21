@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 const Nav = () => {
   return (
@@ -7,7 +8,9 @@ const Nav = () => {
         <img src="images/logo.png" className="nav_logo_image" />
       </div>
       <div className="logout">
-        <p className="logout_button">logout</p>
+        <Link to="/signup">
+          <p className="logout_button">logout</p>
+        </Link>
       </div>
     </div>
   );

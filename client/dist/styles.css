@@ -9,6 +9,14 @@
   height: 50px;
 }
 
+.nav_logo {
+  width: 80%;
+}
+
+.logout :hover {
+  cursor: pointer;
+}
+
 .nav_bar {
   display: flex;
   width: 100%;
@@ -120,12 +128,25 @@ button {
   width: 50%;
 }
 
+.video_player_container {
+  text-align: left;
+}
+
+iframe {
+  width: 90%;
+  height: 400px;
+}
+
 .matchup {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   text-align: center;
   align-items: center;
+}
+
+.matchup :hover {
+  cursor: pointer;
 }
 
 .standings_teamInfo {
