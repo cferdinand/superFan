@@ -5,11 +5,11 @@ const bcrypt = require("bcrypt");
 let config;
 let apiCall;
 let youtube;
-if (process.env.NODE_ENV === "development") {
-  config = require("../../config.json");
-  apiCall = config.apiCall;
-  youtube = config.youtube;
-}
+// if (process.env.NODE_ENV === "development") {
+//   config = require("../../config.json");
+//   apiCall = config.apiCall;
+//   youtube = config.youtube;
+// }
 
 const headers = {
   "content-type": "application/octet-stream",
