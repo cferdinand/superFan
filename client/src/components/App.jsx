@@ -1,16 +1,18 @@
-import React from "react";
-import ChooseTeams from "../containers/Teams.jsx";
+import React, { useState } from "react";
 import Login from "./Login.jsx";
+import Nav from "./Nav.jsx";
 
 const App = () => {
   return (
     <div>
-      <div>
-        <Login />
+      <div className="navigation">
+        <Nav />
       </div>
-      {/* <div>
-        <ChooseTeams />
-      </div> */}
+      <div className={elementClass}>
+        <div className="loginContainer">
+          <Login updateClassName={updateClassName} />
+        </div>
+      </div>
     </div>
   );
 };

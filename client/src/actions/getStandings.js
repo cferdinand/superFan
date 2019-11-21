@@ -1,15 +1,15 @@
 import axios from "axios";
 import { hostUrl } from "../../../config.json";
 
-const getFixtures = teamId => {
+const getStandings = () => {
   const leagueId = 2;
   return dispatch => {
     return axios
-      .get(`${hostUrl}/home/fixtures/${teamId}/${leagueId}`)
+      .get(`${hostUrl}/home/standings/${leagueId}`)
       .then(({ data }) => {
         dispatch({
-          type: "FIXTURES",
-          payload: data.api.fixtures
+          type: "STANDINGS",
+          payload: data
         });
       })
       .catch(err => {
@@ -18,4 +18,4 @@ const getFixtures = teamId => {
   };
 };
 
-export default getFixtures;
+export default getStandings;
