@@ -5,9 +5,9 @@
   "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=development nodemon server/index.js",
+    "start-dev": "NODE_ENV=development nodemon server/index.js",
+    "start": "node server/index.js",
     "create-db": "psql postgres -a -f ./db/schema.sql",
-    "start-dev": "concurrently \"npm run build-dev\" \"nodemon server/index.js\"",
     "build-dev": "webpack -d --watch --mode development",
     "build-prod": "webpack -p --mode production",
     "heroku-postbuild": "npm install && node server/index.js"
