@@ -1,13 +1,16 @@
 import React from "react";
 import { Route, Link, BrowserRouter as Router } from "react-router-dom";
 
-const Login = ({ updateClassName }) => {
+const Login = ({ validateUser }) => {
+  const login = () => {
+    validateUser(username, password);
+  };
   return (
     <div>
       <form
         className="loginForm"
         onSubmit={() => {
-          updateClassName("loggedIn");
+          login();
         }}
       >
         <label>Username: </label>
@@ -20,7 +23,7 @@ const Login = ({ updateClassName }) => {
         </div>
         <Link to="/teams">
           <button type="submit" className="submit">
-            Submit
+            Login
           </button>
         </Link>
         <button type="reset" className="reset">

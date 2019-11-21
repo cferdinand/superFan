@@ -5,7 +5,8 @@
   "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/index.js",
+    "start": "NODE_ENV=dev nodemon server/index.js",
+    "create-db": "psql postgres -a -f ./db/schema.sql",
     "start-dev": "concurrently \"npm run build-dev\" \"nodemon server/index.js\"",
     "build-dev": "webpack -d --watch --mode development",
     "build-prod": "webpack -p --mode production"
@@ -22,10 +23,12 @@
   "homepage": "https://github.com/cferdinand/superFan#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
     "concurrently": "^5.0.0",
     "express": "^4.17.1",
     "nodemon": "^1.19.4",
+    "pg": "^7.14.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-redux": "^7.1.3",

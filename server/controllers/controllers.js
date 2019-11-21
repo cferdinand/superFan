@@ -3,8 +3,11 @@ const {
   getHighlights,
   getListOfTeams,
   getListOfStandings,
-  addFavoriteTeam
+  addFavoriteTeam,
+  addNewUser,
+  getUser
 } = require("../models/models.js");
+const bcrypt = require("bcrypt");
 
 module.exports = {
   getTeams: async (req, res) => {
@@ -46,14 +49,45 @@ module.exports = {
       res.sendStatus(500);
     }
   },
-  addFavorites: (req, res) => {
-    addFavoriteTeam(req.body)
-      .then(() => {
-        res.sendStatus(201);
-      })
-      .catch(err => {
-        console.log(err);
-        res.sendStatus(500);
-      });
+  addUser: async (req, res) => {
+    const saltRounds = 10;
+    let user = await getUser(req.body.username);
+    if (user.rowCount === 0) {
+      bcrypt
+        .hash(req.body.password, saltRounds)
+        .then(async hash => {
+          let sessionId = await addNewUser(req.body.username, hash, hash);
+          return sessionId.rows[0].sessionid;
+        })
+        .then(sessionId => {
+          res.send(sessionId).status(200);
+        });
+    } else {
+      res.sendStatus(400);
+    }
+  },
+  getExistingUser: async (req, res) => {
+    try {
+      let user = await getUser(req.query.username);
+      if (user.rowCount !== 0) {
+        bcrypt
+          .compare(req.query.password, user.rows[0].user_password)
+          .then(valid => {
+            valid ? res.sendStatus(200) : res.sendStatus(404);
+          });
+      }
+    } catch (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
+  },
+  addFavorites: async (req, res) => {
+    try {
+      await addFavoriteTeam(req.body);
+      res.sendStatus(201);
+    } catch (err) {
+      console.log(err);
+      res.sendStatus(500);
+    }
   }
 };

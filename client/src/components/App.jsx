@@ -3,8 +3,6 @@ import Login from "./Login.jsx";
 import Nav from "./Nav.jsx";
 
 const App = () => {
-  const [elementClass, updateClassName] = useState("pageBody");
-
   return (
     <div>
       <div className="navigation">
