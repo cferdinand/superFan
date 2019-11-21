@@ -6,6 +6,8 @@ const ChooseTeam = ({ teams, allTeams, favorite }) => {
     teams();
   }, []);
 
+  //TODO: add a favorite team to the database on click
+
   const TeamsTable = () => {
     if (Object.keys(allTeams).length !== 0) {
       return allTeams.map(team => {
