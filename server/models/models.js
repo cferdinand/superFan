@@ -11,6 +11,8 @@ if (process.env.NODE_ENV === "development") {
   youtube = config.youtube;
 }
 
+console.log(process.env);
+
 const headers = {
   "content-type": "application/octet-stream",
   "x-rapidapi-host": process.env.rapid_api_host || apiCall["x-rapidapi-host"],
