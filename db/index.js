@@ -1,7 +1,7 @@
 const Pool = require("pg").Pool;
-const config = require("../config.json");
-
+let config = {};
 if (process.env.NODE_ENV === "dev") {
+  config = require("../config.json");
   config.env = config.development;
 }
 
