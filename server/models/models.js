@@ -13,8 +13,7 @@ if (process.env.NODE_ENV === "development") {
 
 const headers = {
   "content-type": "application/octet-stream",
-  "x-rapidapi-host":
-    process.env["x-rapidapi-host"] || apiCall["x-rapidapi-host"],
+  "x-rapidapi-host": process.env.rapid_api_host || apiCall["x-rapidapi-host"],
   "x-rapidapi-key": process.env.football_APIKEY || apiCall.APIKEY
 };
 
