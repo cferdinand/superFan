@@ -15,6 +15,7 @@ router.get("/fixtures/:teamId/:leagueId", getFixtures);
 router.get("/standings/:leagueId", getStandings);
 router.get("/highlights", getHighlights);
 router.get("/:leagueId", getTeams);
+
 router.post("/favorite", addFavorites);
 router.get("/favorite", getFavoriteTeam);
 router.post("/users", addUser);

@@ -6,15 +6,10 @@ const Login = ({ validateUser, loggedIn }) => {
   const [username, updateUserName] = useState("");
   const [password, updatePassword] = useState("");
 
-  useEffect(() => {
-    if (!!loggedIn) {
-      localStorage.removeItem("superfan_sessionId");
-    }
-  }, [loggedIn]);
-
   const login = () => {
     validateUser(username, password);
   };
+  
   return (
     <div>
       <form
@@ -30,7 +25,6 @@ const Login = ({ validateUser, loggedIn }) => {
             type="text"
             name="username"
             onChange={event => {
-              console.log(username);
               updateUserName(event.target.value);
             }}
           />
@@ -45,11 +39,9 @@ const Login = ({ validateUser, loggedIn }) => {
             }}
           />
         </div>
-        <Link to="/teams">
-          <button type="submit" className="submit">
-            Login
-          </button>
-        </Link>
+        <button type="submit" className="submit">
+          Login
+        </button>
         <button
           type="reset"
           className="reset"

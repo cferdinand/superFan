@@ -53,13 +53,11 @@ module.exports = {
   addUser: async (req, res) => {
     const saltRounds = 10;
     let user = await getUser(req.body.username);
-    if (user.rowCount === 0) {
+    if (!user.rowCount) {
       bcrypt
         .hash(req.body.password, saltRounds)
         .then(async hash => {
-          console.log(hash);
-          let sessionId = await addNewUser(req.body.username, hash, hash);
-          localStorage.setItem("superfan_sessionId", hash);
+          let sessionId = await addNewUser(req.body.username, hash, req.session.session_value);
           return sessionId.rows[0].sessionid, id;
         })
         .then(sessionId => {
@@ -76,7 +74,9 @@ module.exports = {
         bcrypt
           .compare(req.query.password, user.rows[0].user_password)
           .then(valid => {
-            valid ? res.sendStatus(200) : res.sendStatus(404);
+            valid
+              ? res.status(200).redirect(301, "/teams")
+              : res.sendStatus(404);
           });
       } else {
         res.send({ response: "User Not Found" });
@@ -87,6 +87,7 @@ module.exports = {
     }
   },
   addFavorites: async (req, res) => {
+    console.log(req.body);
     try {
       await addFavoriteTeam(req.body);
       res.sendStatus(201);

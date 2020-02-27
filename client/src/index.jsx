@@ -14,19 +14,12 @@ import ChooseTeam from "./containers/Teams.jsx";
 import Home from "./components/MainPage.jsx";
 import SignUp from "./components/SignUp.jsx";
 
-let sessionId = localStorage.getItem("superfan_sessionId");
 
 const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/">
-          {sessionId ? (
-            <Redirect to="/home" component={App} />
-          ) : (
-            <Redirect to="/login" component={App} />
-          )}
-        </Route>
+        {/* <Route exact path="/" component={App} /> */}
         <Route export path="/signup" component={SignUp} />
         <Route exact path="/login" component={App} />
         <Route exact path="/teams" component={ChooseTeam} />

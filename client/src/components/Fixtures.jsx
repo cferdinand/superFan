@@ -29,7 +29,12 @@ const Fixtures = ({ favoriteTeam, getFixtures, fixtures, getHighlights }) => {
                 ></img>
                 <p className="fixtures_team_name">{homeTeam}</p>
               </div>
-              <p>vs</p>
+              <span>{match.goalsHomeTeam}</span>
+              <div className="matchupStatus">
+                <span>{match.statusShort}</span>
+                <p>vs</p>
+              </div>
+              <span>{match.goalsAwayTeam}</span>
               <div className="fixture_team">
                 <img
                   src={match.awayTeam.logo}

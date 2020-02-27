@@ -7,8 +7,11 @@ const FavoriteTeams = ({ favoriteTeam, loggedIn }) => {
   }
   return (
     <div className="favorite_team">
-      <img src={favoriteTeam.logo} className="favorite_teamlogo" />
-      <p className="favorite_team_name ">{favoriteTeam.name}</p>
+      <div className="sumn">
+        <h4 className="favorite_team_heading">Favorite Team(s)</h4>
+        <img src={favoriteTeam.logo} className="favorite_teamlogo" />
+        <p className="favorite_team_name ">{favoriteTeam.name}</p>
+      </div>
     </div>
   );
 };
