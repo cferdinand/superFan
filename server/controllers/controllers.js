@@ -57,29 +57,35 @@ module.exports = {
       bcrypt
         .hash(req.body.password, saltRounds)
         .then(async hash => {
-          let sessionId = await addNewUser(req.body.username, hash, req.session.session_value);
-          return sessionId.rows[0].sessionid, id;
+          let newUser = await addNewUser(
+            req.body.username,
+            hash,
+            req.session.id
+          );
+          return newUser.rows[0].sessionid;
         })
-        .then(sessionId => {
-          res.status(200).send(sessionId);
+        .then(() => {
+          res.sendStatus(200);
         });
     } else {
-      res.sendStatus(400);
+      res.status(500).send("User already exists");
     }
   },
   getExistingUser: async (req, res) => {
     try {
-      let user = await getUser(req.query.username);
+      let user = await getUser(req.body.username);
       if (user.rowCount !== 0) {
-        bcrypt
-          .compare(req.query.password, user.rows[0].user_password)
-          .then(valid => {
-            valid
-              ? res.status(200).redirect(301, "/teams")
-              : res.sendStatus(404);
-          });
+        const valid = await bcrypt.compare(
+          req.body.password,
+          user.rows[0].user_password
+        );
+        valid
+          ? res.status(200).redirect(301, "/home")
+          : res
+              .status(403)
+              .send({ response: "Username or passowrd incorrect" });
       } else {
-        res.send({ response: "User Not Found" });
+        res.status(403).send({ response: "User Not Found" });
       }
     } catch (err) {
       console.log(err);
@@ -87,7 +93,6 @@ module.exports = {
     }
   },
   addFavorites: async (req, res) => {
-    console.log(req.body);
     try {
       await addFavoriteTeam(req.body);
       res.sendStatus(201);
@@ -98,7 +103,7 @@ module.exports = {
   },
   getFavoriteTeam: async (req, res) => {
     try {
-      let fav = await getFav();
+      let fav = await getFav(req);
       res.status(201).send(fav);
     } catch (err) {
       console.log(err);

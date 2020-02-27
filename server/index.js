@@ -23,28 +23,7 @@ app.get("/", Auth.verifySession, (req, res) => {
   res.redirect("/home");
 });
 
-app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../client/dist/index.html"), function(
-    err
-  ) {
-    if (err) {
-      res.status(500).send(err);
-    }
-  });
-});
-
-app.use(["/teams", "/home", "/signup"], routes);
-
-// app.get("/validate", function(req, res) {
-//   // res.redirect("/login");
-//   res.sendFile(path.join(__dirname + "/../client/dist/index.html"), function(
-//     err
-//   ) {
-//     if (err) {
-//       res.status(500).send(err);
-//     }
-//   });
-// });
+app.use("/", routes);
 
 app.listen(port, () => {
   console.log(`App now listening on port ${port}!`);

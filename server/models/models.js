@@ -75,7 +75,7 @@ module.exports = {
   },
   getUser: username => {
     return db
-      .query(`SELECT * FROM user_table WHERE username='${username}'`)
+      .query(`SELECT * FROM users WHERE username='${username}'`)
       .then(data => {
         return data;
       })
@@ -87,7 +87,7 @@ module.exports = {
   addNewUser: (username, password, sessionId) => {
     return db
       .query(
-        `INSERT INTO user_table (username, user_password, sessionId) VALUES ($1,$2,$3) RETURNING sessionid, id`,
+        `INSERT INTO users (username, user_password, sessionid) VALUES ($1,$2,$3) RETURNING sessionid, id`,
         [username, password, sessionId]
       )
       .then(data => {
@@ -99,11 +99,16 @@ module.exports = {
       });
   },
   addFavoriteTeam: ({ team, username }) => {
-    let favTeam = JSON.stringify(team);
+    let userId = `(SELECT id from users where username='${username}')`;
     return db
       .query(
-        `UPDATE user_table SET favorite_team='${favTeam}' WHERE id=(SELECT id from user_table where username='${username}')`
+        `INSERT INTO favorite_teams(user_id,favorite_name) VALUES(${userId},'${team}') RETURNING id`
       )
+      .then(({ rows }) => {
+        return db.query(
+          `UPDATE users SET favorite_team='${rows[0].id}' WHERE id=${userId}`
+        );
+      })
       .then(data => {
         return data;
       })
@@ -112,16 +117,14 @@ module.exports = {
         throw err;
       });
   },
-  getFav: () => {
-    let sessionId = localStorage.getItem("superfan_sessionId");
+  getFav: req => {
+    console.log(req.session);
     return db
       .query(
-        `SELECT favorite_team from user_table WHERE sessionid='${sessionId}'`
+        `SELECT favorite_name from favorite_teams WHERE user_id='${req.session.user_id}'`
       )
-      .then(data => {
-        console.log(data);
-        //data = JSON.parse(data);
-        //return data;
+      .then(({ rows }) => {
+        return rows[0].favorite_name;
       })
       .catch(err => {
         console.log(err);
