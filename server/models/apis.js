@@ -47,10 +47,10 @@ module.exports = {
       });
   },
   getHighlights: match => {
-    let apiKey = process.env.youtube_APIKEY || youtube.youtube_APIKEY;
+    let apiKey = process.env.youtube_APIKEY;
     const headers = `part=snippet&q=${match} highlights&channelId=UCqZQlzSHbVJrwrn5XvzrzcA&key=${apiKey}&content-type=application/json&videoEmbeddable=true&type=video&maxResults=1`;
     return axios
-      .get(`${process.env.BASEURL}/search?${headers}`)
+      .get(`${process.env.youtube_BASEURL}/search?${headers}`)
       .then(data => {
         return data;
       })

@@ -7,8 +7,6 @@ const ChooseTeam = ({ teams, allTeams }) => {
     teams();
   }, []);
 
-  //TODO: add a favorite team to the database on click
-
   const addTeam = team => {
     addFavorite(team);
   };

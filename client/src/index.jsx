@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "../src/components/App.jsx";
-import { Provider } from "react-redux";
-import store from "../src/store/store.jsx";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
-import ChooseTeam from "./containers/Teams.jsx";
+import { Provider } from "react-redux";
+import App from "../src/components/App.jsx";
+import store from "../src/store/store.jsx";
+import ChooseTeam from "./containers/TeamChooserContainer.jsx";
 import Home from "./containers/HomeContainer.jsx";
 import SignUp from "./components/SignUp.jsx";
 

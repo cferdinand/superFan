@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
-import getTeams from "../actions/getTeams.js";
-import addFavorite from "../actions/addFavorite.js";
-import ChooseTeam from "../components/ChooseTeam.jsx";
+import getTeams from "../actions/dispatchActions/getTeams.js";
+import ChooseTeam from "../components/TeamChooser.jsx";
 
 const mapStateToProps = store => ({
   allTeams: store.teams
