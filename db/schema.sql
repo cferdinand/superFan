@@ -24,7 +24,9 @@ DROP TABLE IF EXISTS favorite_teams;
 CREATE TABLE favorite_teams (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER NOT NULL,
-  favorite_name VARCHAR(60) NULL
+  api_id INTEGER NOT NULL,
+  favorite_name VARCHAR(60) NOT NULL,
+  favorite_logo VARCHAR NULL
 );
 
 -- ---

@@ -165,7 +165,7 @@ iframe {
   align-items: center;
 }
 
-.matchup :hover {
+.fixtures_row :hover {
   cursor: pointer;
 }
 

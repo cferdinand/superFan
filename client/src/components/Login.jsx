@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
-import Home from "./MainPage.jsx";
+import React, { useState } from "react";
+import { useHistory, Link } from "react-router-dom";
+import validateUser from "../actions/validateUser.js";
 
-const Login = ({ validateUser, loggedIn }) => {
+const Login = () => {
   const [username, updateUserName] = useState("");
   const [password, updatePassword] = useState("");
+  const history = useHistory();
 
-  const login = () => {
-    validateUser(username, password);
+  const login = async () => {
+    let isLoggedIn = await validateUser(username, password);
+    isLoggedIn ? history.push("/home") : "";
   };
-  
+
   return (
     <div>
       <form

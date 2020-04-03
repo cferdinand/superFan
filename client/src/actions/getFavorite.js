@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const getFavorite = (team, user) => {
+const getFavorite = () => {
   return dispatch => {
-    return axios.get("/teams/favorite").then(() => {
+    return axios.get("/home/favorite").then(({ data }) => {
       dispatch({
         type: "FAVORITE",
-        payload: team
+        payload: data
       });
     });
   };

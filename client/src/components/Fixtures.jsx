@@ -1,12 +1,6 @@
 import React, { useEffect } from "react";
 
-const Fixtures = ({ favoriteTeam, getFixtures, fixtures, getHighlights }) => {
-  useEffect(() => {
-    if (favoriteTeam !== undefined) {
-      getFixtures([favoriteTeam]);
-    }
-  }, [favoriteTeam]);
-
+const Fixtures = ({ favoriteTeam, fixtures, getHighlights }) => {
   const FixtureList = () => {
     if (Object.keys(fixtures).length !== 0) {
       return fixtures.map(match => {

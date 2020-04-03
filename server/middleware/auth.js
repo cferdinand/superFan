@@ -1,4 +1,5 @@
 const models = require("../models/index.js");
+
 module.exports = {
   createSession: (req, res, next) => {
     Promise.resolve(req.cookies.superFan)
@@ -6,7 +7,7 @@ module.exports = {
         if (!hash) {
           throw hash;
         }
-        return models.Sessions.get("session_value", hash);
+        return models.Sessions.getSession("session_value", hash);
       })
       .then(session => {
         if (!session) {
@@ -15,9 +16,9 @@ module.exports = {
         return session;
       })
       .catch(() => {
-        return models.Sessions.create()
+        return models.Sessions.createSession()
           .then(id => {
-            return models.Sessions.get("id", id);
+            return models.Sessions.getSession("id", id);
           })
           .then(session => {
             res.cookie("superFan", session.session_value);
@@ -30,7 +31,7 @@ module.exports = {
       });
   },
   verifySession: (req, res, next) => {
-    return models.Sessions.get("id", req.session.id).then(session => {
+    return models.Sessions.getSession("id", req.session.id).then(session => {
       if (!session || !session.user_id) {
         res.redirect("/login");
       } else {
@@ -38,5 +39,13 @@ module.exports = {
       }
     });
   },
-  removeSession: (req, res, next) => {}
+  isLoggedIn: (req, res, next) => {
+    return models.Sessions.getSession("id", req.session.id).then(session => {
+      if (session && session.user_id) {
+        res.redirect("/home");
+      } else {
+        next();
+      }
+    });
+  }
 };

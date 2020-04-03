@@ -6,12 +6,13 @@ const cookieparser = require("cookie-parser");
 const port = process.env.PORT || 3000;
 const Auth = require("./middleware/auth.js");
 const routes = require("./routes/routes.js");
-//const create = require("./models/sessions.js");
+const morgan = require("morgan");
 
 app.use(cookieparser());
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(Auth.createSession);
+app.use(morgan("dev"));
 app.use(
   express.static(path.join(__dirname, "/../client/dist"), {
     maxAge: 1,

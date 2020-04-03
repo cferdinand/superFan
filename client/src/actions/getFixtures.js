@@ -1,10 +1,9 @@
 import axios from "axios";
 
 const getFixtures = teamId => {
-  const leagueId = 2;
   return dispatch => {
     return axios
-      .get(`/home/fixtures/${teamId}/${leagueId}`)
+      .get(`/home/fixtures`)
       .then(({ data }) => {
         dispatch({
           type: "FIXTURES",

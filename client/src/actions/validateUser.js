@@ -1,19 +1,15 @@
 import axios from "axios";
 
 const validateUser = (username, password) => {
-  return dispatch => {
-    return axios
-      .get(`/login/users/?username=${username}&password=${password}`)
-      .then(({ data }) => {
-        dispatch({
-          type: data.response === "User Not Found" ? "NOTLOGGEDIN" : "LOGGEDIN",
-          payload: data.response
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+  return axios
+    .post("/login", { username, password })
+    .then(() => {
+      return true;
+    })
+    .catch(err => {
+      alert(err.response.data);
+      return false;
+    });
 };
 
 export default validateUser;

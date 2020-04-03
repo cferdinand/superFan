@@ -1,15 +1,10 @@
 const Pool = require("pg").Pool;
-let config = {};
-if (process.env.NODE_ENV === "development") {
-  config = require("../config.json");
-  config.env = config.development;
-}
 
 const pool = new Pool({
-  user: process.env.PGUSER || config.env.PGUSER,
-  host: process.env.PGHOST || config.env.PGHOST,
-  database: process.env.PGDATABASE || config.env.PGDATABASE,
-  port: process.env.PGPORT || config.env.PGPORT
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
+  port: process.env.PGPORT
 });
 
 pool.on("error", (err, client) => {
