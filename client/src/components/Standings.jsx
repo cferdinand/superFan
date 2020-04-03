@@ -1,10 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const Standings = ({ standings, getStandings }) => {
-  useEffect(() => {
-    getStandings();
-  }, []);
-
+const Standings = ({ standings }) => {
   const StandingsList = () => {
     if (standings !== 0) {
       return standings.map(team => {

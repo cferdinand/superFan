@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Login from "../containers/LoginContainer.jsx";
+import Login from "./Login.jsx";
 import Nav from "./Nav.jsx";
 
 const App = () => {

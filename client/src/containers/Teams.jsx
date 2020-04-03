@@ -8,8 +8,7 @@ const mapStateToProps = store => ({
 });
 const mapDispatchToProps = dispatch => {
   return {
-    teams: () => dispatch(getTeams()),
-    favorite: team => dispatch(addFavorite(team))
+    teams: () => dispatch(getTeams())
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ChooseTeam);

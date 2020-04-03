@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Standings from "../containers/StandingsContainer.jsx";
 import Fixtures from "../containers/FixturesContainer.jsx";
 import Favorite from "../containers/FavoriteContainer.jsx";
 import Highlights from "../containers/HighlightsContainer.jsx";
 import Nav from "./Nav.jsx";
 
-const MainPage = () => {
+const MainPage = ({ getFavorite, getFixtures, getStandings }) => {
+  useEffect(() => {
+    getFixtures();
+    getStandings();
+    getFavorite();
+  }, []);
+
   return (
     <div>
       <div className="navigation">

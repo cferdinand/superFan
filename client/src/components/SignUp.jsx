@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from "react";
-import {
-  Route,
-  Link,
-  Switch,
-  BrowserRouter as Router,
-  Redirect
-} from "react-router-dom";
+import React, { useState } from "react";
+import { useHistory, Link } from "react-router-dom";
 import Nav from "./Nav.jsx";
+import addUser from "../actions/addUser.js";
 
-const SignUp = ({ addUser }) => {
+const SignUp = () => {
   const [username, updateUserName] = useState("");
   const [password, updatePassword] = useState("");
+  const history = useHistory();
 
-  const addNewUser = () => {
-    return addUser(username, password);
+  const addNewUser = async () => {
+    let isLoggedIn = await addUser(username, password);
+    isLoggedIn ? history.push("/teams") : "";
   };
+
   return (
     <div>
       <Nav />
       <form
-        className="loginForm"
+        className="signupForm"
         onSubmit={e => {
           e.preventDefault();
           addNewUser();
@@ -45,21 +43,16 @@ const SignUp = ({ addUser }) => {
             }}
           />
         </div>
-        <Link to="/teams">
-          <button type="submit" className="submit">
-            Submit
-          </button>
-        </Link>
+        <button type="submit" className="submit">
+          Submit
+        </button>
         <button type="reset" className="reset">
           Reset
         </button>
       </form>
       <div>
         <p>
-          Don't have an account?
-          <Link to="/login">
-            <span></span>
-          </Link>
+          Already have an account? <Link to="/login">Click Here</Link>
         </p>
       </div>
     </div>

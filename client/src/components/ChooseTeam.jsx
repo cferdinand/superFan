@@ -1,12 +1,17 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import addFavorite from "../actions/addFavorite.js";
 
-const ChooseTeam = ({ teams, allTeams, favorite }) => {
+const ChooseTeam = ({ teams, allTeams }) => {
   useEffect(() => {
     teams();
   }, []);
 
   //TODO: add a favorite team to the database on click
+
+  const addTeam = team => {
+    addFavorite(team);
+  };
 
   const TeamsTable = () => {
     if (Object.keys(allTeams).length !== 0) {
@@ -35,9 +40,7 @@ const ChooseTeam = ({ teams, allTeams, favorite }) => {
       return "";
     }
   };
-  const addTeam = team => {
-    favorite(team);
-  };
+
   return (
     <div className="teamchooser_main">
       <table className="teamChooserTable">

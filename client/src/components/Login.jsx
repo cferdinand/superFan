@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Route, Link, BrowserRouter as Router } from "react-router-dom";
-import Home from "./MainPage.jsx";
+import React, { useState } from "react";
+import { useHistory, Link } from "react-router-dom";
+import validateUser from "../actions/validateUser.js";
 
-const Login = ({ validateUser, loggedIn }) => {
+const Login = () => {
   const [username, updateUserName] = useState("");
   const [password, updatePassword] = useState("");
+  const history = useHistory();
 
-  useEffect(() => {
-    if (!!loggedIn) {
-      localStorage.removeItem("superfan_sessionId");
-    }
-  }, [loggedIn]);
-
-  const login = () => {
-    validateUser(username, password);
+  const login = async () => {
+    let isLoggedIn = await validateUser(username, password);
+    isLoggedIn ? history.push("/home") : "";
   };
+
   return (
     <div>
       <form
@@ -30,7 +27,6 @@ const Login = ({ validateUser, loggedIn }) => {
             type="text"
             name="username"
             onChange={event => {
-              console.log(username);
               updateUserName(event.target.value);
             }}
           />
@@ -45,11 +41,9 @@ const Login = ({ validateUser, loggedIn }) => {
             }}
           />
         </div>
-        <Link to="/teams">
-          <button type="submit" className="submit">
-            Login
-          </button>
-        </Link>
+        <button type="submit" className="submit">
+          Login
+        </button>
         <button
           type="reset"
           className="reset"
