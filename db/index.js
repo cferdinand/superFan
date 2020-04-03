@@ -7,9 +7,9 @@ const config = {
   port: process.env.PGPORT
 };
 
-if (process.env.NODE_ENV === "production") {
-  config.ssl = JSON.parse(process.env.SSL);
-}
+// if (process.env.NODE_ENV === "production") {
+//   config.ssl = JSON.parse(process.env.SSL);
+// }
 
 const pool = new Pool(config);
 
