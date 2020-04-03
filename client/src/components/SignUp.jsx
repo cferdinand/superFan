@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import Nav from "./Nav.jsx";
+import Nav from "../containers/NavContainer.jsx";
 import addUser from "../actions/addUser.js";
 
 const SignUp = () => {
@@ -15,7 +15,9 @@ const SignUp = () => {
 
   return (
     <div>
-      <Nav />
+      <div className="navigation">
+        <Nav />
+      </div>
       <form
         className="signupForm"
         onSubmit={e => {

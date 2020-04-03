@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import addFavorite from "../actions/addFavorite.js";
+import Nav from "../containers/NavContainer.jsx";
 
 const ChooseTeam = ({ teams, allTeams }) => {
   useEffect(() => {
@@ -40,10 +41,15 @@ const ChooseTeam = ({ teams, allTeams }) => {
   };
 
   return (
-    <div className="teamchooser_main">
-      <table className="teamChooserTable">
-        <TeamsTable />
-      </table>
+    <div>
+      <div className="navigation">
+        <Nav />
+      </div>
+      <div className="teamchooser_main">
+        <table className="teamChooserTable">
+          <TeamsTable />
+        </table>
+      </div>
     </div>
   );
 };

@@ -4,7 +4,8 @@ const config = {
   user: process.env.PGUSER,
   host: process.env.PGHOST,
   database: process.env.PGDATABASE,
-  port: process.env.PGPORT
+  port: process.env.PGPORT,
+  password: process.env.PGPASSWORD || ""
 };
 
 // if (process.env.NODE_ENV === "production") {

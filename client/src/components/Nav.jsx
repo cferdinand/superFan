@@ -1,8 +1,7 @@
 import React from "react";
-import { useHistory, Link, BrowserRouter as Router } from "react-router-dom";
-import logout from "../actions/logout.js";
+import { useHistory } from "react-router-dom";
 
-const Nav = () => {
+const Nav = ({ logout }) => {
   const history = useHistory();
 
   const logoutUser = async () => {
