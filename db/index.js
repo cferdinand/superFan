@@ -4,12 +4,13 @@ const config = {
   user: process.env.PGUSER,
   host: process.env.PGHOST,
   database: process.env.PGDATABASE,
-  port: process.env.PGPORT
+  port: process.env.PGPORT,
+  password: process.env.PGPASSWORD || ""
 };
 
-if (process.env.NODE_ENV === "production") {
-  config.ssl = JSON.parse(process.env.SSL);
-}
+// if (process.env.NODE_ENV === "production") {
+//   config.ssl = JSON.parse(process.env.SSL);
+// }
 
 const pool = new Pool(config);
 

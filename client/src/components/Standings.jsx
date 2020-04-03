@@ -2,7 +2,7 @@ import React from "react";
 
 const Standings = ({ standings }) => {
   const StandingsList = () => {
-    if (standings !== 0) {
+    if (standings !== null) {
       return standings.map(team => {
         return (
           <tr className="standings_teamrow">
@@ -44,25 +44,25 @@ const Standings = ({ standings }) => {
       <table className="standings_table">
         <thead>
           <tr>
-            <th colspan="1">
+            <th colSpan="1">
               <p className="header team_name">Team Name</p>
             </th>
-            <th colspan="1">
+            <th colSpan="1">
               <p>MP</p>
             </th>
-            <th colspan="1">
+            <th colSpan="1">
               <p>W</p>
             </th>
-            <th colspan="1">
+            <th colSpan="1">
               <p>D</p>
             </th>
-            <th colspan="1">
+            <th colSpan="1">
               <p>L</p>
             </th>
-            <th colspan="1">
+            <th colSpan="1">
               <p>GF</p>
             </th>
-            <th colspan="1">
+            <th colSpan="1">
               <p>GA</p>
             </th>
           </tr>

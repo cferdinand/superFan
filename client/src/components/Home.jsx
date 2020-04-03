@@ -3,7 +3,7 @@ import Standings from "../containers/StandingsContainer.jsx";
 import Fixtures from "../containers/FixturesContainer.jsx";
 import Favorite from "../containers/FavoriteContainer.jsx";
 import Highlights from "../containers/HighlightsContainer.jsx";
-import Nav from "./Nav.jsx";
+import Nav from "../containers/NavContainer.jsx";
 
 const MainPage = ({ getFavorite, getFixtures, getStandings }) => {
   useEffect(() => {

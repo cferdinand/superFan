@@ -1,4 +1,4 @@
-const standings = (state = 0, action) => {
+const standings = (state = null, action) => {
   switch (action.type) {
     case "STANDINGS":
       return action.payload;

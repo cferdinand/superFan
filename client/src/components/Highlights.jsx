@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const Highlights = ({ highlight }) => {
-  const [video, updateVideo] = useState(false);
-  useEffect(() => {
-    if (highlight !== 0) {
-      updateVideo(true);
-    }
-  }, [highlight]);
-
   const YouTube = () => {
     return (
       <div className="video_player_container">
@@ -26,7 +19,11 @@ const Highlights = ({ highlight }) => {
 
   return (
     <div>
-      {video ? <YouTube /> : <p>Choose a fixture to view highlights</p>}
+      {highlight !== null ? (
+        <YouTube />
+      ) : (
+        <p>Choose a fixture to view highlights</p>
+      )}
     </div>
   );
 };
