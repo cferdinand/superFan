@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import getFixtures from "../actions/getFixtures.js";
-import getStandings from "../actions/getStandings.js";
-import Home from "../components/MainPage.jsx";
-import getFavorite from "../actions/getFavorite.js";
+import getFixtures from "../actions/dispatchActions/getFixtures.js";
+import getStandings from "../actions/dispatchActions/getStandings.js";
+import Home from "../components/Home.jsx";
+import getFavorite from "../actions/dispatchActions/getFavorite.js";
 
 const mapStateToProps = store => ({
   favoriteTeam: store.favorite.team_id
