@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Nav from "../components/Nav.jsx";
-import logout from "../actions/logout.js";
+import logout from "../actions/dispatchActions/logout.js";
 
 const mapDispatchToProps = dispatch => {
   return {
